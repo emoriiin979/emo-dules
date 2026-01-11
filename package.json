@@ -1,0 +1,18 @@
+{
+  "name": "emo-dules",
+  "version": "0.1.1",
+  "description": "このリポジトリは、様々なプロジェクトで再利用可能なラッパークラスやユーティリティモジュールを管理するためのコレクションです。\r 標準APIの複雑さを隠蔽し、より使いやすいインターフェースを提供することを目的としています。",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "author": "emoriiin979",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.0.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  }
+}
