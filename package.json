@@ -1,9 +1,19 @@
 {
-  "name": "emo-dules",
+  "name": "@emoriiin979/emo-dules",
   "version": "0.1.1",
-  "description": "このリポジトリは、様々なプロジェクトで再利用可能なラッパークラスやユーティリティモジュールを管理するためのコレクションです。\r 標準APIの複雑さを隠蔽し、より使いやすいインターフェースを提供することを目的としています。",
-  "main": "index.js",
+  "description": "Reusable wrapper classes and utility modules for multiple projects.",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "vitest"

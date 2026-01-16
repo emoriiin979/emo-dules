@@ -9,11 +9,12 @@
     "target": "esnext",
     // For nodejs:
     "lib": [
-      "esnext"
+      "esnext",
+      "dom"
     ],
-    "types": [
-      "node"
-    ],
+    // "types": [
+    //   "node"
+    // ],
     // and npm install -D @types/node
     // Other Outputs
     "sourceMap": true,
@@ -31,7 +32,7 @@
     // "noPropertyAccessFromIndexSignature": true,
     // Recommended Options
     "strict": true,
-    "jsx": "react-jsx",
+    // "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
