@@ -1,7 +1,23 @@
-version: '3'
+version: '3.8'
+
+x-pgsql-common: &pgsql-common
+  build:
+    context: .docker/pgsql
+
 services:
   app:
     build:
       context: .docker/node
+    env_file: .env.testing
     volumes:
       - .:/app
+  pgsql_test:
+    <<: *pgsql-common
+    env_file: .env.testing
+    volumes:
+      - pgsql_test_data:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+
+volumes:
+  pgsql_test_data:
