@@ -1,5 +1,9 @@
 version: '3.8'
 
+x-mysql-common: &mysql-common
+  build:
+    context: .docker/mysql
+
 x-pgsql-common: &pgsql-common
   build:
     context: .docker/pgsql
@@ -11,6 +15,15 @@ services:
     env_file: .env.testing
     volumes:
       - .:/app
+
+  mysql_test:
+    <<: *mysql-common
+    env_file: .env.testing
+    volumes:
+      - mysql_test_data:/var/lib/mysql
+    ports:
+      - "13306:3306"
+
   pgsql_test:
     <<: *pgsql-common
     env_file: .env.testing
@@ -20,4 +33,5 @@ services:
       - "15432:5432"
 
 volumes:
+  mysql_test_data:
   pgsql_test_data:
