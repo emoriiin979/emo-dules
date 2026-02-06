@@ -1,5 +1,5 @@
-import { createFileOperators as nodeCFO } from './concretes/node.js';
-import { createFileOperators as httpCFO } from './concretes/http.js';
+import { createFileOperators as nodeCFO } from './concretes/node-storage.js';
+import { createFileOperators as httpCFO } from './concretes/http-storage.js';
 import type { FileOperators } from './types.js';
 
 /**
