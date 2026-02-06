@@ -5,7 +5,7 @@ import type { FileOperators } from './types.js';
 /**
  * ストレージ種別とオペレータ生成関数のマップ
  */
-export const storages = {
+const storages = {
     Node: nodeCFO,
     Http: httpCFO,
 } as const;

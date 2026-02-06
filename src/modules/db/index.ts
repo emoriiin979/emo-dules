@@ -4,7 +4,7 @@ import { createDbClient as createPgsqlClient } from './concretes/pgsql.js';
 /**
  * DB種別とDBクライアント生成関数のマップ
  */
-export const dbClients = {
+const dbClients = {
     mysql: createMysqlClient,
     pgsql: createPgsqlClient,
 } as const;
