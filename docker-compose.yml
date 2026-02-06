@@ -15,6 +15,10 @@ services:
     env_file: .env.testing
     volumes:
       - .:/app
+    command: npm run test:units
+    depends_on:
+      - mysql_test
+      - pgsql_test
 
   mysql_test:
     <<: *mysql-common

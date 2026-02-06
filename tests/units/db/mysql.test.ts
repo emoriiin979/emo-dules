@@ -1,7 +1,7 @@
 import * as drizzleMysql from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createDbClient } from '../../src/modules/db/concretes/mysql.js';
+import { createDbClient } from '../../../src/modules/db/concretes/mysql.js';
 
 vi.mock('mysql2/promise', () => ({
     default: {

@@ -1,14 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createFileOperators } from '../../src/modules/storage/index.js';
-import { createFileOperators as nodeCFO } from '../../src/modules/storage/concretes/node-storage.js';
-import { createFileOperators as httpCFO } from '../../src/modules/storage/concretes/http-storage.js';
+import { createFileOperators } from '../../../src/modules/storage/index.js';
+import { createFileOperators as nodeCFO } from '../../../src/modules/storage/concretes/node-storage.js';
+import { createFileOperators as httpCFO } from '../../../src/modules/storage/concretes/http-storage.js';
 
 // モック化
-vi.mock('../../src/modules/storage/concretes/node-storage.js', () => ({
+vi.mock('../../../src/modules/storage/concretes/node-storage.js', () => ({
     createFileOperators: vi.fn(),
 }));
 
-vi.mock('../../src/modules/storage/concretes/http-storage.js', () => ({
+vi.mock('../../../src/modules/storage/concretes/http-storage.js', () => ({
     createFileOperators: vi.fn(),
 }));
 

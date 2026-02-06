@@ -16,7 +16,9 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "npm run test:units && npm run test:features",
+    "test:units": "vitest run --dir tests/units",
+    "test:features": "vitest run --dir tests/features"
   },
   "author": "emoriiin979",
   "license": "MIT",

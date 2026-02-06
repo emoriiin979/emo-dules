@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createDbClient } from '../../src/modules/db/concretes/pgsql.js';
+import { createDbClient } from '../../../src/modules/db/concretes/pgsql.js';
 import { Pool } from 'pg';
 import * as drizzlePg from 'drizzle-orm/node-postgres';
 

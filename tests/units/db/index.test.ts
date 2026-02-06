@@ -1,13 +1,13 @@
 import { describe, it, expect, vi, beforeEach, expectTypeOf } from 'vitest';
-import { createDbClient, transaction } from '../../src/modules/db/index.js';
-import * as mysqlImpl from '../../src/modules/db/concretes/mysql.js';
-import * as pgsqlImpl from '../../src/modules/db/concretes/pgsql.js';
+import { createDbClient, transaction } from '../../../src/modules/db/index.js';
+import * as mysqlImpl from '../../../src/modules/db/concretes/mysql.js';
+import * as pgsqlImpl from '../../../src/modules/db/concretes/pgsql.js';
 
 // 具象実装をモック化する
-vi.mock('../../src/modules/db/concretes/mysql.js', () => ({
+vi.mock('../../../src/modules/db/concretes/mysql.js', () => ({
     createDbClient: vi.fn(),
 }));
-vi.mock('../../src/modules/db/concretes/pgsql.js', () => ({
+vi.mock('../../../src/modules/db/concretes/pgsql.js', () => ({
     createDbClient: vi.fn(),
 }));
 
