@@ -1,7 +1,41 @@
-version: '3'
+version: '3.8'
+
+x-mysql-common: &mysql-common
+  build:
+    context: .docker/mysql
+
+x-pgsql-common: &pgsql-common
+  build:
+    context: .docker/pgsql
+
 services:
   app:
     build:
       context: .docker/node
+    env_file: .env.testing
     volumes:
       - .:/app
+    command: npm run test:units
+    depends_on:
+      - mysql_test
+      - pgsql_test
+
+  mysql_test:
+    <<: *mysql-common
+    env_file: .env.testing
+    volumes:
+      - mysql_test_data:/var/lib/mysql
+    ports:
+      - "13306:3306"
+
+  pgsql_test:
+    <<: *pgsql-common
+    env_file: .env.testing
+    volumes:
+      - pgsql_test_data:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+
+volumes:
+  mysql_test_data:
+  pgsql_test_data:

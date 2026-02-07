@@ -7,11 +7,11 @@ import {
     appendFile,
     deleteFile,
     createFileOperators
-} from '../src/modules/storage/concretes/http';
-import * as httpModule from '../src/modules/http';
+} from '../../../src/modules/storage/concretes/http-storage';
+import * as httpModule from '../../../src/modules/http';
 
 // モックの作成
-vi.mock('../src/modules/http', () => ({
+vi.mock('../../../src/modules/http', () => ({
     httpFetch: vi.fn(),
 }));
 

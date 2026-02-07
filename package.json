@@ -16,16 +16,22 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "npm run test:units && npm run test:features",
+    "test:units": "vitest run --dir tests/units",
+    "test:features": "vitest run --dir tests/features"
   },
   "author": "emoriiin979",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^25.0.6",
+    "@types/pg": "^8.16.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.16"
   },
   "dependencies": {
-    "csv": "^6.4.1"
+    "csv": "^6.4.1",
+    "drizzle-orm": "^0.45.1",
+    "mysql2": "^3.16.3",
+    "pg": "^8.18.0"
   }
 }

@@ -8,7 +8,7 @@ import {
     writeFile,
     appendFile,
     deleteFile,
-} from '../src/modules/storage/concretes/node.js';
+} from '../../../src/modules/storage/concretes/node-storage.js';
 
 describe('storage-node', () => {
     let tempDir: string;
