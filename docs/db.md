@@ -13,7 +13,7 @@ createDbClient(
 
 | プロパティ | 型 | 説明 |
 | --- | --- | --- |
-| `dbType` | `'Mysql' \| 'Pgsql'` | DB種別。 |
+| `dbType` | `'mysql' \| 'pgsql'` | DB種別。 |
 | `options` | `MysqlConnectionInfo \| PgsqlConnectionInfo` | DB接続情報。各種必要な情報は後述。|
 
 ### MysqlConnectionInfo
