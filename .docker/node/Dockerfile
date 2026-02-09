@@ -2,4 +2,4 @@ FROM node:24-bookworm
 
 WORKDIR /app
 
-CMD ["npm", "run", "test"]
+CMD ["npm", "run", "dev"]
