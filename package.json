@@ -15,6 +15,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "echo \"Error: no dev specified\" && exit 1",
     "build": "tsc",
     "test": "npm run test:units && npm run test:features",
     "test:units": "vitest run --dir tests/units",
