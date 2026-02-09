@@ -3,18 +3,11 @@ import { mysqlTable, serial as serialMysql, varchar } from 'drizzle-orm/mysql-co
 import { drizzle as drizzleMysql } from 'drizzle-orm/mysql2';
 import { drizzle as drizzlePgsql } from 'drizzle-orm/node-postgres';
 import { pgTable, serial as serialPgsql, text } from 'drizzle-orm/pg-core';
+import config from '../config';
 import mysql from 'mysql2/promise';
 import pg from 'pg';
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { createDbClient, transaction } from '../../src/modules/db';
-
-const mysqlConnInfo = {
-    host: process.env.MYSQL_HOST ?? '',
-    port: parseInt(process.env.MYSQL_PORT ?? '3306'),
-    user: process.env.MYSQL_USER ?? '',
-    password: process.env.MYSQL_PASSWORD ?? '',
-    database: process.env.MYSQL_DATABASE ?? '',
-};
 
 describe('db - mysql', async () => {
     // テスト用テーブルのスキーマ
@@ -24,7 +17,7 @@ describe('db - mysql', async () => {
     });
 
     // 検証用のdrizzle DBクライアント
-    const pool = mysql.createPool(mysqlConnInfo);
+    const pool = mysql.createPool(config.mysqlConnInfo);
     const ddb = drizzleMysql(pool);
 
     beforeAll(async () => {
@@ -51,7 +44,7 @@ describe('db - mysql', async () => {
 
     describe('createDbClient & transaction', async () => {
         it('DB変更が正しくコミットされること', async () => {
-            const db = createDbClient('mysql', mysqlConnInfo);
+            const db = createDbClient('mysql', config.mysqlConnInfo);
             await transaction(db, async (tx) => {
                 await tx.insert(userSchema).values({ name: 'test11' });
                 await tx.insert(userSchema).values({ name: 'test12' });
@@ -60,7 +53,7 @@ describe('db - mysql', async () => {
             expect(result[0].count).toBe(2);
         });
         it('エラーが起きた場合はロールバックされること', async () => {
-            const db = createDbClient('mysql', mysqlConnInfo);
+            const db = createDbClient('mysql', config.mysqlConnInfo);
             try {
                 await transaction(db, async (tx) => {
                     await tx.insert(userSchema).values({ name: 'test21' });
@@ -76,14 +69,6 @@ describe('db - mysql', async () => {
     });
 });
 
-const pgsqlConnInfo = {
-    host: process.env.POSTGRES_HOST ?? '',
-    port: parseInt(process.env.POSTGRES_PORT ?? '5432'),
-    user: process.env.POSTGRES_USER ?? '',
-    password: process.env.POSTGRES_PASSWORD ?? '',
-    database: process.env.POSTGRES_DB ?? '',
-};
-
 describe('db - pgsql', async () => {
     // テスト用テーブルのスキーマ
     const userSchema = pgTable('users', {
@@ -92,7 +77,7 @@ describe('db - pgsql', async () => {
     });
 
     // 検証用のdrizzle DBクライアント
-    const pool = new pg.Pool(pgsqlConnInfo);
+    const pool = new pg.Pool(config.pgsqlConnInfo);
     const ddb = drizzlePgsql(pool);
 
     beforeAll(async () => {
@@ -119,7 +104,7 @@ describe('db - pgsql', async () => {
 
     describe('createDbClient', async () => {
         it('DB変更が正しくコミットされること', async () => {
-            const db = createDbClient('pgsql', pgsqlConnInfo);
+            const db = createDbClient('pgsql', config.pgsqlConnInfo);
             await transaction(db, async (tx) => {
                 await tx.insert(userSchema).values({ name: 'test11' });
                 await tx.insert(userSchema).values({ name: 'test12' });
@@ -128,7 +113,7 @@ describe('db - pgsql', async () => {
             expect(result[0].count).toBe(2);
         });
         it('エラーが起きた場合はロールバックされること', async () => {
-            const db = createDbClient('pgsql', pgsqlConnInfo);
+            const db = createDbClient('pgsql', config.pgsqlConnInfo);
             try {
                 await transaction(db, async (tx) => {
                     await tx.insert(userSchema).values({ name: 'test21' });
