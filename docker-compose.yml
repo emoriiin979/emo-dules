@@ -1,41 +1,41 @@
 version: '3.8'
 
-x-mysql-common: &mysql-common
-  build:
-    context: .docker/mysql
-
-x-pgsql-common: &pgsql-common
-  build:
-    context: .docker/pgsql
-
 services:
   app:
     build:
       context: .docker/node
-    env_file: .env.testing
+    env_file:
+      - .env.${APP_ENV:-nothing}
     volumes:
       - .:/app
-    command: npm run test:units
     depends_on:
-      - mysql_test
-      - pgsql_test
+      - mysql
+      - pgsql
 
-  mysql_test:
-    <<: *mysql-common
-    env_file: .env.testing
+  mysql:
+    build:
+      context: .docker/mysql
+    env_file:
+      - .env.${APP_ENV:-nothing}
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: true
     volumes:
-      - mysql_test_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     ports:
-      - "13306:3306"
+      - "${MYSQL_ADMIN_PORT:-3306}:3306"
 
-  pgsql_test:
-    <<: *pgsql-common
-    env_file: .env.testing
+  pgsql:
+    build:
+      context: .docker/pgsql
+    env_file:
+      - .env.${APP_ENV:-nothing}
     volumes:
-      - pgsql_test_data:/var/lib/postgresql/data
+      - pgsql_data:/var/lib/postgresql/data
     ports:
-      - "15432:5432"
+      - "${POSTGRES_ADMIN_PORT:-5432}:5432"
 
 volumes:
-  mysql_test_data:
-  pgsql_test_data:
+  mysql_data:
+    name: mysql_data_${APP_ENV:-dev}
+  pgsql_data:
+    name: pgsql_data_${APP_ENV:-dev}
