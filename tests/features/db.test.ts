@@ -49,6 +49,7 @@ describe('db - mysql', async () => {
                 await tx.insert(userSchema).values({ name: 'test11' });
                 await tx.insert(userSchema).values({ name: 'test12' });
             });
+            await db.close();
             const result = await ddb.select({ count: count() }).from(userSchema);
             expect(result[0].count).toBe(2);
         });
@@ -63,6 +64,7 @@ describe('db - mysql', async () => {
             } catch (e) {
                 // error expected
             }
+            await db.close();
             const result = await ddb.select({ count: count() }).from(userSchema);
             expect(result[0].count).toBe(0);
         });
@@ -109,6 +111,7 @@ describe('db - pgsql', async () => {
                 await tx.insert(userSchema).values({ name: 'test11' });
                 await tx.insert(userSchema).values({ name: 'test12' });
             });
+            await db.close();
             const result = await ddb.select({ count: count() }).from(userSchema);
             expect(result[0].count).toBe(2);
         });
@@ -123,6 +126,7 @@ describe('db - pgsql', async () => {
             } catch (e) {
                 // error expected
             }
+            await db.close();
             const result = await ddb.select({ count: count() }).from(userSchema);
             expect(result[0].count).toBe(0);
         });

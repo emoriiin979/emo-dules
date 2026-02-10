@@ -1,5 +1,6 @@
 import { createDbClient as createMysqlClient } from './concretes/mysql.js';
 import { createDbClient as createPgsqlClient } from './concretes/pgsql.js';
+import type { BaseDbClient } from './types.js';
 
 /**
  * DB種別とDBクライアント生成関数のマップ
@@ -20,8 +21,8 @@ export function createDbClient<
 >(
     dbType: K,
     options: Parameters<typeof dbClients[K]>[0],
-): ReturnType<typeof dbClients[K]> {
-    return dbClients[dbType](options) as ReturnType<typeof dbClients[K]>;
+): ReturnType<typeof dbClients[K]> & BaseDbClient {
+    return dbClients[dbType](options) as ReturnType<typeof dbClients[K]> & BaseDbClient;
 }
 
 /**
