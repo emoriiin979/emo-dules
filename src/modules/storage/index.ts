@@ -6,8 +6,8 @@ import type { FileOperators } from './types.js';
  * ストレージ種別とオペレータ生成関数のマップ
  */
 const storages = {
-    Node: nodeCFO,
-    Http: httpCFO,
+    node: nodeCFO,
+    http: httpCFO,
 } as const;
 
 /**
@@ -18,7 +18,7 @@ const storages = {
  */
 export function createFileOperators<K extends keyof typeof storages>(
     storageType: K,
-    options: Parameters<typeof storages[K]>[0],
+    options?: Parameters<typeof storages[K]>[0],
 ): FileOperators {
-    return storages[storageType](options);
+    return storages[storageType](options ?? {});
 }
