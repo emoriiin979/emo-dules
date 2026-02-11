@@ -22,7 +22,7 @@ describe('createFileOperators', () => {
         const mockResult = { read: vi.fn(), write: vi.fn() };
         vi.mocked(nodeCFO).mockReturnValue(mockResult as any);
 
-        const result = createFileOperators('Node', mockOptions);
+        const result = createFileOperators('node', mockOptions);
         expect(nodeCFO).toHaveBeenCalledWith(mockOptions);
         expect(result).toBe(mockResult);
         expect(httpCFO).not.toHaveBeenCalled();
@@ -33,7 +33,7 @@ describe('createFileOperators', () => {
         const mockResult = { read: vi.fn(), write: vi.fn() };
         vi.mocked(httpCFO).mockReturnValue(mockResult as any);
 
-        const result = createFileOperators('Http', mockOptions);
+        const result = createFileOperators('http', mockOptions);
         expect(httpCFO).toHaveBeenCalledWith(mockOptions);
         expect(result).toBe(mockResult);
         expect(nodeCFO).not.toHaveBeenCalled();
