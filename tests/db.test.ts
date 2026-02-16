@@ -3,11 +3,11 @@ import { mysqlTable, serial as serialMysql, varchar } from 'drizzle-orm/mysql-co
 import { drizzle as drizzleMysql } from 'drizzle-orm/mysql2';
 import { drizzle as drizzlePgsql } from 'drizzle-orm/node-postgres';
 import { pgTable, serial as serialPgsql, text } from 'drizzle-orm/pg-core';
-import config from '../config';
+import config from './config';
 import mysql from 'mysql2/promise';
 import pg from 'pg';
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
-import { createDbClient, transaction } from '../../src/modules/db';
+import { createDbClient, transaction } from '../src/modules/db';
 
 describe('db - mysql', async () => {
     // テスト用テーブルのスキーマ

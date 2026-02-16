@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { addUrlParams, mergeUrl } from '../../src/modules/url.js';
+import { addUrlParams, mergeUrl } from '../src/modules/url.js';
 
 describe('mergeUrl', () => {
     it.each([

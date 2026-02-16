@@ -1,4 +1,4 @@
-import { createFileOperators } from '../../src/modules/storage';
+import { createFileOperators } from '../src/modules/storage';
 import { describe, it, expect, afterEach } from 'vitest';
 import fs from 'fs';
 

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
-import { formatDate, parseDate } from '../../src/modules/date';
+import { formatDate, parseDate } from '../src/modules/date';
 
 describe('formatDate', () => {
     describe('指定のフォーマットで正しく変換されること', () => {

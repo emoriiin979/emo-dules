@@ -17,9 +17,7 @@
   "scripts": {
     "dev": "echo \"Error: no dev specified\" && exit 1",
     "build": "tsc",
-    "test": "npm run test:units && npm run test:features",
-    "test:units": "vitest run --dir tests/units",
-    "test:features": "vitest run --dir tests/features"
+    "test": "vitest"
   },
   "author": "emoriiin979",
   "license": "MIT",

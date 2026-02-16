@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Hono } from 'hono';
-import { createLogFuncs, createLoggerMiddleware } from '../../src/modules/log';
+import { createLogFuncs, createLoggerMiddleware } from '../src/modules/log';
 
 /**
  * JSON行のみを抽出してパースするためのヘルパー
