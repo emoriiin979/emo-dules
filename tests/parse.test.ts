@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { parseCsv, parseCustomFormat } from '../../src/modules/parse';
+import { parseCsv, parseCustomFormat } from '../src/modules/parse';
 
 describe('parseCsv', () => {
     it('CSVを正しくパースできること', async () => {
