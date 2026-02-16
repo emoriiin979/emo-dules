@@ -1,0 +1,2 @@
+SFTP_TEST_SUCCESS_001
+This is a dummy file for getFile integration test.
