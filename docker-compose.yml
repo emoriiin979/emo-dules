@@ -11,6 +11,7 @@ services:
     depends_on:
       - mysql
       - pgsql
+      - sftp
 
   mysql:
     build:
@@ -34,8 +35,24 @@ services:
     ports:
       - "${POSTGRES_ADMIN_PORT:-5432}:5432"
 
+  sftp:
+    build:
+      context: .docker/sftp
+      args:
+        SFTP_USER: ${SFTP_USER}
+    env_file:
+      - .env.${APP_ENV:-dev}
+    environment:
+      SFTP_USERS: "${SFTP_USER}:${SFTP_PASSWORD}:1001:1001:upload"
+    ports:
+      - "${SFTP_ADMIN_PORT:-2222}:${SFTP_PORT:-22}"
+    volumes:
+      - "sftp_data:/home/${SFTP_USER}/upload"
+
 volumes:
   mysql_data:
     name: mysql_data_${APP_ENV:-dev}
   pgsql_data:
     name: pgsql_data_${APP_ENV:-dev}
+  sftp_data:
+    name: sftp_data_${APP_ENV:-dev}
