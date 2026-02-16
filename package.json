@@ -1,6 +1,6 @@
 {
   "name": "@emoriiin979/emo-dules",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Reusable wrapper classes and utility modules for multiple projects.",
   "type": "module",
   "main": "dist/index.js",
