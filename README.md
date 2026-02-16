@@ -22,6 +22,10 @@ JavaScript の標準 `fetch` API をラップしたHTTPクライアントです�
 CSVをはじめ、様々な形式の文字列をパースできます。  
 [[詳細](./docs/parse.md)]
 
+### ☁️ sftp
+SFTPサーバーとの接続、ファイル取得、およびディレクトリの再帰的同期を行うためのモジュールです。  
+[[詳細](./docs/sftp.md)]
+
 ### 💾 storage
 `readFile` や `writeFile` などのファイル操作を行う関数です。  
 現在はNode.js用、リモートストレージ（HTTP通信）用の関数が利用可能です。  
